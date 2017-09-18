@@ -20,7 +20,7 @@ function makeApiRequest(sendBackResponseToBrowser) {
     path: '/v3/search/images?fields=thumb',
     method: 'GET', 
     headers: {
-        'Api-Key': keys.key
+        'Api-Key': 'mqgnsu2jhyt9chkkxykavrbf'
     }
     }; 
 
@@ -55,8 +55,8 @@ function makeApiRequest(sendBackResponseToBrowser) {
         
     var keys=
     {
-        client:process.env.Client, 
-        secret:process.env.Secret
+        client:"I5dnF9arPvURP3AlfpxYwFB8v", 
+        secret:"DcgrQMB29r5UEVIyDlMTmE7eTZw4ISAn5qz1nldv6DmM0wKyol"
     }
     
     var combined=keys.client+ ":" + keys.secret;
