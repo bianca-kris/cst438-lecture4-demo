@@ -6,23 +6,21 @@
     var router = express.Router();
     var https = require('https'); 
     var btoa=require('btoa');
+    var keys=require ('../.git/config.js');
     var temp;
+    
 
 
 
-console.log("In getty!!!!!!!!!!!!"); 
-console.log("api key: " + "dptu26zbf7yupd4jff66nvm5"); 
-
-var num="mqgnsu2jhyt9chkkxykavrbf"
 function makeApiRequest(sendBackResponseToBrowser) {
     var apiResponse = ''; 
     const options = {
     hostname: "api.gettyimages.com", 
     port: 443, 
-    path: '/v3/search/images?fields=comp',
+    path: '/v3/search/images?fields=thumb',
     method: 'GET', 
     headers: {
-        'Api-Key': num
+        'Api-Key': keys.key
     }
     }; 
 
@@ -45,6 +43,7 @@ function makeApiRequest(sendBackResponseToBrowser) {
             console.log("num images: " + images.length); 
             console.log("url of first image: " + images[0].display_sizes[0].uri); 
             var imageURI = images[3].display_sizes[0].uri;
+            console.log("test: "+images[3].keywords);
             
             sendBackResponseToBrowser(imageURI); 
         }); 
@@ -56,8 +55,8 @@ function makeApiRequest(sendBackResponseToBrowser) {
         
     var keys=
     {
-        client:'I5dnF9arPvURP3AlfpxYwFB8v',
-        secret:'DcgrQMB29r5UEVIyDlMTmE7eTZw4ISAn5qz1nldv6DmM0wKyol'
+        client:process.env.Client, 
+        secret:process.env.Secret
     }
     
     var combined=keys.client+ ":" + keys.secret;
